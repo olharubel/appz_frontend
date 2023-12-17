@@ -18,7 +18,7 @@ const SurveyList = () => {
       return;
     }
 
-    const apiUrl = `http://ec2-18-192-63-28.eu-central-1.compute.amazonaws.comt:7256/Survey/patient/${userId}/uncompeted`;
+    const apiUrl = `http://ec2-18-192-63-28.eu-central-1.compute.amazonaws.com/Survey/patient/${userId}/uncompeted`;
 
     axios.get(apiUrl) 
       .then(response => {
