@@ -12,7 +12,7 @@ function Login() {
     const handleLogin = async () => {
         localStorage.removeItem('userId');
         try {
-            const response = await fetch('https://localhost:7256/User/authenticate', {
+            const response = await fetch('http://ec2-18-192-63-28.eu-central-1.compute.amazonaws.comt:7256/User/authenticate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })

@@ -18,7 +18,7 @@ const Diagnosis = () => {
       return;
     }
 
-    const apiUrl = `https://localhost:7256/Survey/patient/${userId}/completed`;
+    const apiUrl = `http://ec2-18-192-63-28.eu-central-1.compute.amazonaws.com/Survey/patient/${userId}/completed`;
 
     axios.get(apiUrl) 
       .then(response => {
