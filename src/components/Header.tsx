@@ -6,9 +6,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Image from 'react-bootstrap/Image';
 
-const Header = () => {
-    return (
-      <Navbar expand="lg" className="bg-body-tertiary">
+const Header = ({ isLoggedIn }) => {
+  return (
+    <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -18,11 +18,11 @@ const Header = () => {
             <Nav.Link href="#contact">Контакти</Nav.Link>
           </Nav>
 
-          <Nav.Link href="#services">Вийти</Nav.Link>
+          {isLoggedIn && <Nav.Link href="/login">Вийти</Nav.Link>}
         </Navbar.Collapse>
       </Container>
     </Navbar>
-      );
-  }
-  
+  );
+};
+
   export default Header;

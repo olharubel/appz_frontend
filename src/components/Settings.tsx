@@ -69,7 +69,7 @@ const Settings = () => {
 
   return (
     <>
-     <Header />
+      <Header isLoggedIn={true} />
      <Container className="mx-0 px-0 h-100">
       <Row>
       <Col sm={2} className='min-vh-100'>

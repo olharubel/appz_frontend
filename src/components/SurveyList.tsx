@@ -32,7 +32,7 @@ const SurveyList = () => {
 
   return (
     <>
-      <Header />
+       <Header isLoggedIn={true} />
       <Container className="mx-0 px-0 h-100">
       <Row>
         <Col sm={2} className='min-vh-100'>
@@ -40,7 +40,7 @@ const SurveyList = () => {
         </Col>
         <Col sm={8}>
         <div>
-        <h1>Ваші опитування {surveys.length}</h1>
+        <h1>Ваші опитування</h1>
               {surveys?.map(survey => (
                 <SurveyItem key={survey?.id} survey={survey} />
               ))}

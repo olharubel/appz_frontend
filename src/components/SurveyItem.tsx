@@ -11,11 +11,11 @@ const SurveyItem = ({ survey }) => {
   const handleButtonClick = () => {
     console.log(survey.surveyStatus);
     if (survey.surveyStatus  === "UnderPatientReviewSurvey") {
-      alert('Checking result...');
+      alert('Коментар лікаря: ' + survey.doctorComment);
     } else if (survey.surveyStatus ===  "UncompletedSurvey" || 
       survey.surveyStatus ===  "OverdueSurvey") {
       console.log('opening survey');
-      navigate('/survey1');
+      navigate('/survey1', { state: { surveyId: survey.id } });
     }
   };
 

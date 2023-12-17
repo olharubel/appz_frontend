@@ -8,8 +8,11 @@ function Login() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+ const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleLogin = async () => {
+    setIsLoggedIn(true);
+
         localStorage.removeItem('userId');
         try {
             const response = await fetch('https://localhost:7256/User/authenticate', {
@@ -41,7 +44,7 @@ function Login() {
 
     return (
         <div>
-          <Header />
+           <Header isLoggedIn={isLoggedIn} />
           <Container>
             <Row>
               <Col  style={{

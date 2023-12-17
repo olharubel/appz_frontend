@@ -4,23 +4,58 @@ import MenuBar from './MenuBar.tsx';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import axios from 'axios';
+import { Survey } from '../models/survey.ts';
 
 const Notification = () => {
+  const [overdueSurveys, setSurveys] = useState<Survey[]>([]);
+  const userId = localStorage.getItem('userId');
+
+  useEffect(() => {
+    if (!userId) {
+      console.error('User ID not found in local storage');
+      return;
+    }
+
+    const apiUrl = `https://localhost:7256/Survey/patient/${userId}/uncompeted`;
+
+    axios.get(apiUrl) 
+      .then(response => {
+        console.log(response.data);
+        setSurveys(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching surveys:', error);
+      });
+  }, []);
+
+
   return (
     <>
-      <Header />
+      <Header isLoggedIn={true} />
       <Container className="mx-0 px-0 h-100">
-      <Row>
-        <Col sm={2} className='min-vh-100'>
-        <MenuBar />
-        </Col>
-        <Col sm={8}>
-        <div>
-        <h1>Нагадування</h1>
-        </div>
-        </Col>
-      </Row>
-    </Container>
+        <Row>
+          <Col sm={2} className='min-vh-100'>
+            <MenuBar />
+          </Col>
+          <Col sm={8}>
+            <div>
+              <h1>Нагадування</h1>
+              {overdueSurveys.length > 0 ? (
+                <ul>
+                  {overdueSurveys.map((survey) => (
+                    <li key={survey?.id}><h3>
+                      Вам потрібно пройти опитування: {survey?.title}
+                      </h3></li>
+                  ))}
+                </ul>
+              ) : (
+                <h3>У вас немає прострочених опитувань.</h3>
+              )}
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };
