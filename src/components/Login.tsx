@@ -35,7 +35,7 @@ function Login() {
                 localStorage.setItem('userId', data.userId);
                 navigate('/', { state: { userId: data.userId } })
             } else {
-                alert('Not authenticated');
+                alert('Дані не підходять для авторизації як пацієнт!');
             }
         } catch (error) {
             alert('An unexpected error occurred. Please try again later.');
