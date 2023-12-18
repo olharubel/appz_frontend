@@ -23,6 +23,8 @@ const SurveyItem = ({ survey }) => {
     UncompletedSurvey = "Непройдене опитування",
     UnderPatientReviewSurvey = 'Опитування з результатами',
     OverdueSurvey = "Протерміноване опитування",
+    UnderDoctorReviewSurvey = "Переглядається лікарем",
+    ArchiveSurvey = 'Заархівоване опитування',
   }
 
   return (
